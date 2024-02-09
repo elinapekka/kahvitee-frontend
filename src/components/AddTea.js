@@ -9,18 +9,22 @@ export default function AddTea() {
     });
 
     const handleSubmit = () => {
-        fetch("http://localhost:8080/addtea?name=" + tea.name + "&weight=" + tea.weight + "&price=" + tea.price, {
-            method: 'POST',
-            headers: {'Content-type': 'application/json'},
-        })
-        .then(response => {
-            if (response.ok) {
-                alert('Tee lisätty');
-            } else {
-                alert('Jotain meni pieleen: ' + response.statusText);
-            }
-        })
-        .catch(err => console.error(err))
+        if(/^[0-9a-zA-ZäöåÄÖÅ\s]+$/.test(tea.name) && tea.weight >= 0 && tea.price >= 0 ){
+            fetch("http://localhost:8080/addtea?name=" + tea.name + "&weight=" + tea.weight + "&price=" + tea.price, {
+                method: 'POST',
+                headers: {'Content-type': 'application/json'},
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Tee lisätty');
+                } else {
+                    alert('Jotain meni pieleen: ' + response.statusText);
+                }
+            })
+            .catch(err => console.error(err))
+        } else {
+            alert('Teen lisääminen epäonnistui, tarkista syöttämäsi arvot.');
+        }
     }
 
     return ( 

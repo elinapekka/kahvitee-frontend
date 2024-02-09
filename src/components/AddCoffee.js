@@ -10,20 +10,24 @@ export default function AddCoffee() {
     });
 
     const handleSubmit = () => {
-        fetch("http://localhost:8080/addcoffee?name=" + coffee.name + "&weight=" + coffee.weight + "&price=" + coffee.price + "&roastLevel=" + coffee.roastLevel, {
-            method: 'POST',
-            headers: {'Content-type': 'application/json'},
-            //body: JSON.stringify(coffee) 
-        })
-        .then(response => {
-            if (response.ok) {
-                alert('Kahvi lisätty');
-            } else {
-                console.log(JSON.stringify.coffee)
-                alert('Jotain meni pieleen: ' + response.statusText);
-            }
-        })
-        .catch(err => console.error(err))
+        if(/^[0-9a-zA-ZäöåÄÖÅ\s]+$/.test(coffee.name) && coffee.weight >= 0 && coffee.price >= 0 && (coffee.roastLevel >= 1 && coffee.roastLevel <= 5)){
+            fetch("http://localhost:8080/addcoffee?name=" + coffee.name + "&weight=" + coffee.weight + "&price=" + coffee.price + "&roastLevel=" + coffee.roastLevel, {
+                method: 'POST',
+                headers: {'Content-type': 'application/json'},
+                //body: JSON.stringify(coffee) 
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Kahvi lisätty');
+                } else {
+                    console.log(response.statusText);
+                    alert('Jotain meni pieleen: ' + response.statusText);
+                }
+            })
+            .catch(err => console.error(err))
+        } else {
+            alert("Kahvin lisääminen epäonnistui, tarkista syöttämäsi arvot.")
+        }
     }
 
     return ( 
