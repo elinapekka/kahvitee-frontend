@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import AddCoffee from "./AddCoffee";
+import AddTea from "./AddTea";
 
 export default function TeaList() {
 
     const [teas, setTeas] = useState([]);
 
     const getAllTeas = () => {
-        fetch('http://localhost:8080/api/teas')
+        fetch('http://localhost:8080/teas')
         .then(response => {
             
             if (!response.ok) {
@@ -22,7 +22,7 @@ export default function TeaList() {
 
     const deleteTea = (id) => {
         console.log(id);
-        fetch("http://localhost:8080/deleteTea?id=" + id, { method: 'DELETE' })
+        fetch("http://localhost:8080/deletetea?id=" + id, { method: 'DELETE' })
         .then(response => {
             if (response.ok){
                 alert('Tee poistettu.')
@@ -60,7 +60,7 @@ export default function TeaList() {
                     }
                 </tbody>
             </table>   
-            <AddCoffee getTeas={getAllTeas}/>
+            <AddTea />
         </div>
     );
 }

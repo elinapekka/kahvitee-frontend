@@ -6,7 +6,7 @@ export default function CoffeeList() {
     const [coffees, setCoffees] = useState([]);
 
     const getAllCoffees = () => {
-        fetch('http://localhost:8080/api/coffees')
+        fetch('http://localhost:8080/coffees')
         .then(response => {
             
             if (!response.ok) {
@@ -63,7 +63,7 @@ export default function CoffeeList() {
                     }
                 </tbody>
             </table>   
-            <AddCoffee getCoffees={getAllCoffees}/>
+            <AddCoffee/>
         </div>
     );
 }

@@ -1,7 +1,6 @@
 import { useState } from "react";
 
-export default function AddCoffee( {getCoffees} ) {
-
+export default function AddCoffee() {
 
     const [coffee, setCoffee] = useState({
         name: "",
@@ -19,7 +18,6 @@ export default function AddCoffee( {getCoffees} ) {
         .then(response => {
             if (response.ok) {
                 alert('Kahvi lisätty');
-
             } else {
                 console.log(JSON.stringify.coffee)
                 alert('Jotain meni pieleen: ' + response.statusText);
