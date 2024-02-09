@@ -37,8 +37,8 @@ export default function TeaList() {
 
     return ( 
         <div>
-            <h1>Lempiteet</h1>
-            <table style={{margin: "auto", padding: 20}}>
+            <h2>Lempiteet</h2>
+            <table style={{margin: "auto"}}>
                 <thead>
                     <tr>
                         <th>Nimi</th>
@@ -55,7 +55,13 @@ export default function TeaList() {
                             <td>{tea.name}</td>
                             <td>{tea.weight}</td>
                             <td>{tea.price}</td>
-                            <td><button onClick={() => deleteTea(index + 1)}>Poista</button></td>
+                            <td>
+                                <button 
+                                className="deleteButton" 
+                                onClick={() => deleteTea(index + 1)}>
+                                    Poista
+                                </button>
+                            </td>
                         </tr>)
                     }
                 </tbody>

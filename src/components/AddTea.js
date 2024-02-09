@@ -2,7 +2,6 @@ import { useState } from "react";
 
 export default function AddTea() {
 
-
     const [tea, setTea] = useState({
         name: "",
         weight: 0,
@@ -10,8 +9,7 @@ export default function AddTea() {
     });
 
     const handleSubmit = () => {
-        fetch("http://localhost:8080/addtea?name=" + tea.name + "&weight=" + tea.weight 
-            + "&price=" + tea.price, {
+        fetch("http://localhost:8080/addtea?name=" + tea.name + "&weight=" + tea.weight + "&price=" + tea.price, {
             method: 'POST',
             headers: {'Content-type': 'application/json'},
         })
@@ -45,6 +43,7 @@ export default function AddTea() {
                         onChange={(event) => setTea({...tea, weight: event.target.value})} 
                     />
                 </label>
+                    
                 <label>
                     Hinta:
                     <input 
@@ -52,7 +51,7 @@ export default function AddTea() {
                         value={tea.price} 
                         onChange={(event) => setTea({...tea, price: event.target.value})} 
                     />
-                </label>
+                </label>        
                 <input type="submit" value="Submit" />
             </form>
         </div>

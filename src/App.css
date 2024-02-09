@@ -2,4 +2,60 @@
   text-align: center;
 }
 
+.routerLink {
+  color: black;
+  margin: 0 0.8rem;
+  position: relative;
+  text-decoration: none;
+}
 
+.routerLink:hover {
+  color: gray;
+}
+
+.section {
+  width: 100%;
+  margin: auto;
+  border-bottom: 1px solid black;
+  padding: 5px;
+}
+
+table, td, th {
+  border: 1px solid black;
+}
+
+th {
+  background-color: black;
+  color: white;
+}
+
+table {
+  width: 90%;
+  border-collapse: collapse;
+}
+
+.deleteButton {
+  background-color: darkred;
+  border: none;
+  color: white;
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.deleteButton:hover {
+  background-color: gray;
+}
+
+label {
+  padding: 5px;
+}
+
+input, select {
+  margin-left: 3px;
+}

@@ -38,8 +38,8 @@ export default function CoffeeList() {
 
     return ( 
         <div>
-            <h1>Lempikahvit</h1>
-            <table style={{margin: "auto", padding: 20}}>
+            <h2>Lempikahvit</h2>
+            <table style={{margin: "auto"}}>
                 <thead>
                     <tr>
                         <th>Nimi</th>
@@ -58,11 +58,17 @@ export default function CoffeeList() {
                             <td>{coffee.weight}</td>
                             <td>{coffee.price}</td>
                             <td>{coffee.roastLevel}</td>
-                            <td><button onClick={() => deleteCoffee(index + 1)}>Poista</button></td>
+                            <td>
+                                <button 
+                                className="deleteButton" 
+                                onClick={() => deleteCoffee(index + 1)}>
+                                    Poista
+                                </button>
+                            </td>
                         </tr>)
                     }
                 </tbody>
-            </table>   
+            </table>
             <AddCoffee/>
         </div>
     );

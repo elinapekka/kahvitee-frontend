@@ -1,10 +1,11 @@
 import './App.css';
 import CoffeeList from './components/CoffeeList';
 import TeaList from './components/TeaList';
-import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Link, } from 'react-router-dom';
 
 function App() {
-
+  
+  /*
   fetch('http://localhost:8080/api/teas')
   .then(response => {
     if (!response.ok) {
@@ -18,13 +19,15 @@ function App() {
   .catch(error => {
     console.error('There was a problem with the Fetch operation:', error);
   });
+  */
 
   return (
     <div className="App">
       <BrowserRouter>
-      <Link to="/kahvit">Kahvi</Link>{' '}
-      <Link to="/teet">Tee</Link>{' '}
-
+        <div className='section'>
+          <Link to="/kahvit" className="routerLink">Kahvi</Link>{' '}
+          <Link to="/teet" className="routerLink">Tee</Link>{' '}
+        </div>
         <Routes>
           <Route path="/" element={<CoffeeList />} />
           <Route path="/kahvit" element={<CoffeeList />} />
