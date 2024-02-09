@@ -7,6 +7,7 @@
   margin: 0 0.8rem;
   position: relative;
   text-decoration: none;
+  font-weight: 500;
 }
 
 .routerLink:hover {
@@ -34,28 +35,47 @@ table {
   border-collapse: collapse;
 }
 
-.deleteButton {
-  background-color: darkred;
-  border: none;
-  color: white;
-  width: 100%;
-  height: 100%;
-  padding: 5px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.deleteButton:hover {
-  background-color: gray;
-}
-
 label {
   padding: 5px;
 }
 
 input, select {
-  margin-left: 3px;
+  margin-left: 5px;
+  margin-right: 5px;
+  height: 100%;
+}
+
+.numberInput {
+  max-width: 100px;
+}
+
+.deleteButton, .submitButton {
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.deleteButton {
+  background-color: darkred;
+  color: white;
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+  font-size: 15px;
+}
+
+.submitButton {
+  background-color:steelblue;
+  color: white;
+  width: fit-content;
+  height: 100%;
+  padding: 4px;
+  font-size: 14px;
+  border-radius: 15%;
+}
+
+.submitButton:hover, .deleteButton:hover {
+  background-color: gray;
 }

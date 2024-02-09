@@ -49,6 +49,7 @@ export default function AddCoffee() {
                 <label>
                     Paino:
                     <input 
+                        className="numberInput"
                         type="number" 
                         value={coffee.weight} 
                         onChange={(event) => setCoffee({...coffee, weight: event.target.value})} 
@@ -57,6 +58,7 @@ export default function AddCoffee() {
                 <label>
                     Hinta:
                     <input 
+                        className="numberInput"
                         type="number" 
                         value={coffee.price} 
                         onChange={(event) => setCoffee({...coffee, price: event.target.value})} 
@@ -72,7 +74,7 @@ export default function AddCoffee() {
                         <option name="5">5</option>
                     </select>
                 </label>
-                <input type="submit" value="Lisää" />
+                <input className="submitButton" type="submit" value="Lisää" />
             </form>
         </div>
     );

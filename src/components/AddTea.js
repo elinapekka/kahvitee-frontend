@@ -45,6 +45,7 @@ export default function AddTea() {
                 <label>
                     Paino:
                     <input 
+                        className="numberInput"
                         type="number" 
                         value={tea.weight} 
                         onChange={(event) => setTea({...tea, weight: event.target.value})} 
@@ -53,12 +54,13 @@ export default function AddTea() {
                 <label>
                     Hinta:
                     <input 
+                        className="numberInput"
                         type="number" 
                         value={tea.price} 
                         onChange={(event) => setTea({...tea, price: event.target.value})} 
                     />
                 </label>        
-                <input type="submit" value="Lisää" />
+                <input className="submitButton" type="submit" value="Lisää" />
             </form>
         </div>
     );
