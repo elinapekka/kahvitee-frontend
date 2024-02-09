@@ -11,11 +11,15 @@ export default function AddCoffee() {
 
     const handleSubmit = () => {
         if(/^[0-9a-zA-ZäöåÄÖÅ\s]+$/.test(coffee.name) && coffee.weight >= 0 && coffee.price >= 0 && (coffee.roastLevel >= 1 && coffee.roastLevel <= 5)){
-            fetch("http://localhost:8080/addcoffee?name=" + coffee.name + "&weight=" + coffee.weight + "&price=" + coffee.price + "&roastLevel=" + coffee.roastLevel, {
-                method: 'POST',
-                headers: {'Content-type': 'application/json'},
-                //body: JSON.stringify(coffee) 
-            })
+            fetch("http://localhost:8080/addcoffee?name=" + coffee.name 
+                + "&weight=" + coffee.weight 
+                + "&price=" + coffee.price 
+                + "&roastLevel=" + coffee.roastLevel, 
+                {   method: 'POST',
+                    headers: {'Content-type': 'application/json'},
+                    //body: JSON.stringify(coffee) 
+                }
+            )
             .then(response => {
                 if (response.ok) {
                     alert('Kahvi lisätty');
