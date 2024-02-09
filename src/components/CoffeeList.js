@@ -58,7 +58,7 @@ export default function CoffeeList() {
                             <td>{coffee.weight}</td>
                             <td>{coffee.price}</td>
                             <td>{coffee.roastLevel}</td>
-                            <td>
+                            <td style={{maxWidth: 35}} >
                                 <button 
                                 className="deleteButton" 
                                 onClick={() => deleteCoffee(index + 1)}>

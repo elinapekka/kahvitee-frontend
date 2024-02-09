@@ -58,7 +58,7 @@ export default function AddTea() {
                         onChange={(event) => setTea({...tea, price: event.target.value})} 
                     />
                 </label>        
-                <input type="submit" value="Submit" />
+                <input type="submit" value="Lisää" />
             </form>
         </div>
     );

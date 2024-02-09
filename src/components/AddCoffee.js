@@ -72,7 +72,7 @@ export default function AddCoffee() {
                         <option name="5">5</option>
                     </select>
                 </label>
-                <input type="submit" value="Submit" />
+                <input type="submit" value="Lisää" />
             </form>
         </div>
     );
