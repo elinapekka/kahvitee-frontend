@@ -66,7 +66,11 @@ export default function AddCoffee(getAllCoffees) {
                 </label>
                 <label>
                     Paahtoaste:
-                    <select value={coffee.roastLevel} onChange={(event) => setCoffee({...coffee, roastLevel: event.target.value})}>
+                    <select 
+                        id="coffeeRoastLevel"
+                        value={coffee.roastLevel} 
+                        onChange={(event) => setCoffee({...coffee, roastLevel: event.target.value})}
+                    >
                         <option name="1">1</option>
                         <option name="2">2</option>
                         <option name="3">3</option>

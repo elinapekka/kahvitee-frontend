@@ -12,7 +12,7 @@ Löydät backendin täältä: https://github.com/elinapekka/kahvitee-backend
    git clone https://github.com/elinapekka/kahvitee-frontend
    ```
 
-3. Siirry juuri kloonaamasi kansioon. cd kahvitee-frontend
+3. Siirry juuri kloonaamasi kansioon.
    ```sh
    cd kahvitee-frontend
    ```

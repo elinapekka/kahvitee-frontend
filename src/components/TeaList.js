@@ -44,6 +44,7 @@ export default function TeaList() {
     if (teas.length === 0) {
         return (
             <div>
+                <h2>Lempiteet</h2>
                 <div style={{padding: 15,}}>
                     Tällä hetkellä ei yhtään teetä tallennettuna tai backend ei ole käynnissä. 
                 </div>
@@ -84,7 +85,7 @@ export default function TeaList() {
                                 <td>{tea.name}</td>
                                 <td>{tea.weight}</td>
                                 <td>{tea.price}</td>
-                                <td style={{maxWidth: "25px"}} >
+                                <td style={{maxWidth: "30px"}} >
                                 <button 
                                 className="editButton" 
                                 onClick={() => {
