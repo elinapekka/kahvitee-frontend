@@ -5,17 +5,11 @@ Löydät backendin täältä: https://github.com/elinapekka/kahvitee-backend
 
 ### Käyttöönotto-ohjeet
 
-1. Avaa terminaali (esim. GitBash).
+1. Lataa kahvitee-frontend zip-tiedostona painamalla vihreää Code-painiketta ja valitsemalla ***Download zip***.
 
-2. Siirry terminaalissa haluamaasi sijaintiin ja kloonaa Github-arkisto.
-   ```sh
-   git clone https://github.com/elinapekka/kahvitee-frontend
-   ```
+2. Pura zip-tiedostosta ***kahvitee-frontend-main*** haluamaasi kohteeseen. 
 
-3. Siirry juuri kloonaamasi kansioon.
-   ```sh
-   cd kahvitee-frontend
-   ```
+3. Avaa terminaali (esim. PowerShell) ja siirry juuri purkamaasi ***kahvitee-frontend-main*** kansioon.
 
 4. Lataa tarvittavat tiedostot.
    ```sh
