@@ -1,23 +1,15 @@
-import { useState } from "react";
 
-export default function AddCoffee(getAllCoffees) {
-
-    const [coffee, setCoffee] = useState({
-        name: "",
-        weight: 0,
-        price: 0,
-        roastLevel: 1,
-    });
+export default function EditCoffee({coffee, setCoffee, setIsVisible, getAllCoffees}) {
 
     const handleSubmit = () => {
         if(/^[0-9a-zA-ZäöåÄÖÅ\s]+$/.test(coffee.name) && coffee.weight >= 0 && coffee.price >= 0 && (coffee.roastLevel >= 1 && coffee.roastLevel <= 5)){
-            fetch("http://localhost:8080/addcoffee?name=" + coffee.name 
+            fetch("http://localhost:8080/editcoffee?id=" + coffee.id 
+                + "&name=" + coffee.name 
                 + "&weight=" + coffee.weight 
                 + "&price=" + coffee.price 
                 + "&roastLevel=" + coffee.roastLevel, 
-                {   method: 'POST',
+                {   method: 'PUT',
                     headers: {'Content-type': 'application/json'},
-                    //body: JSON.stringify(coffee) 
                 }
             )
             .then(response => {
@@ -25,18 +17,26 @@ export default function AddCoffee(getAllCoffees) {
                     getAllCoffees();
                 } else {
                     console.log(response.statusText);
-                    alert('Jotain meni pieleen: ' + response.statusText);
+                    alert('Jotain meni pieleen.');
                 }
+                setCoffee({
+                    id: 0,
+                    name: '',
+                    weight: 0,
+                    price: 0,
+                    roastLevel: 0,
+                });
+                setIsVisible(false);
             })
             .catch(err => console.error(err))
         } else {
-            alert("Kahvin lisääminen epäonnistui, tarkista syöttämäsi arvot.")
+            alert("Kahvin muokkaaminen epäonnistui, tarkista syöttämäsi arvot.")
         }
     }
 
-    return ( 
+    return(
         <div>
-            <h3>Lisää uusi kahvi</h3>
+            <h3>Muokkaa</h3>
             <form onSubmit={handleSubmit}>
                 <label>
                     Nimi:
@@ -74,8 +74,25 @@ export default function AddCoffee(getAllCoffees) {
                         <option name="5">5</option>
                     </select>
                 </label>
-                <input className="submitButton" type="submit" value="Lisää" />
+                <br/>
+                <input className="submitButton" type="submit" value="Muokkaa" />
             </form>
+            <button 
+                className="exitButton" 
+                onClick={
+                    () => {
+                    setIsVisible(false); 
+                    setCoffee({
+                        id: 0,
+                        name: '',
+                        weight: 0,
+                        price: 0,
+                        roastLevel: 0,
+                    });
+            }}>
+                Peruuta
+            </button>
         </div>
-    );
+    )
+
 }

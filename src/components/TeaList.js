@@ -1,9 +1,17 @@
 import { useEffect, useState } from "react";
 import AddTea from "./AddTea";
+import EditTea from "./EditTea.js";
 
 export default function TeaList() {
 
     const [teas, setTeas] = useState([]);
+    const [isVisible, setIsVisible] = useState(false);
+    const [selectedTea, setSelectedTea] = useState({
+        id: 0,
+        name: '',
+        weight: 0,
+        price: 0,
+    });
 
     const getAllTeas = () => {
         fetch('http://localhost:8080/teas')
@@ -21,7 +29,6 @@ export default function TeaList() {
     useEffect(() => {getAllTeas()}, []);
 
     const deleteTea = (id) => {
-        console.log(id);
         fetch("http://localhost:8080/deletetea?id=" + id, { method: 'DELETE' })
         .then(response => {
             if (response.ok){
@@ -34,15 +41,30 @@ export default function TeaList() {
         .catch(err => console.log(err));
     }
 
-    if (!teas) {
+    if (teas.length === 0) {
         return (
             <div>
-                Tällä hetkellä ei yhtään teetä tallennettuna.
+                <div style={{padding: 15,}}>
+                    Tällä hetkellä ei yhtään teetä tallennettuna tai backend ei ole käynnissä. 
+                </div>
+                <AddTea />
             </div>
         )
     } else {
         return ( 
             <div>
+                <div style={{ 
+                    visibility: isVisible ? "visible" : "hidden",
+                    height: isVisible ? "fit-content" : 0,
+                    
+                }} >
+                    <EditTea
+                        tea={selectedTea} 
+                        setTea={setSelectedTea}
+                        setIsVisible={setIsVisible}
+                        getAllTeas={getAllTeas}
+                    />
+                </div>
                 <h2>Lempiteet</h2>
                 <table style={{margin: "auto"}}>
                     <thead>
@@ -50,6 +72,7 @@ export default function TeaList() {
                             <th>Nimi</th>
                             <th>Paino (g)</th>
                             <th>Hinta (€)</th>
+                            <th></th>
                             <th></th>
                         </tr>
                         
@@ -61,6 +84,21 @@ export default function TeaList() {
                                 <td>{tea.name}</td>
                                 <td>{tea.weight}</td>
                                 <td>{tea.price}</td>
+                                <td style={{maxWidth: "25px"}} >
+                                <button 
+                                className="editButton" 
+                                onClick={() => {
+                                    setSelectedTea({
+                                        id: (index + 1),
+                                        name: tea.name,
+                                        weight: tea.weight,
+                                        price: tea.price,
+                                    }); 
+                                    setIsVisible(true);
+                                }}>
+                                    Muokkaa
+                                </button>
+                            </td>
                                 <td style={{maxWidth: "25px"}}>
                                     <button 
                                     className="deleteButton" 
@@ -72,7 +110,7 @@ export default function TeaList() {
                         }
                     </tbody>
                 </table>   
-                <AddTea />
+                <AddTea getAllTeas={getAllTeas} />
             </div>
         );
     }

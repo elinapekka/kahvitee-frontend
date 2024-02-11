@@ -49,7 +49,7 @@ input, select {
   max-width: 100px;
 }
 
-.deleteButton, .submitButton {
+.deleteButton, .submitButton, .exitButton, .editButton {
   border: none;
   text-align: center;
   text-decoration: none;
@@ -57,7 +57,7 @@ input, select {
   cursor: pointer;
 }
 
-.deleteButton {
+.deleteButton, .editButton {
   background-color: darkred;
   color: white;
   width: 100%;
@@ -66,16 +66,35 @@ input, select {
   font-size: 15px;
 }
 
+.deleteButton {
+  background-color: darkred;
+}
+
+.editButton {
+  background-color: darkgoldenrod;
+}
+
 .submitButton {
   background-color:steelblue;
   color: white;
-  width: fit-content;
+  width: 70px;
   height: 100%;
   padding: 4px;
   font-size: 14px;
-  border-radius: 15%;
+  border-radius: 10px;
+  margin: 3px;
 }
 
-.submitButton:hover, .deleteButton:hover {
+.exitButton {
+  background-color: darkred;
+  color: white;
+  width: 70px;
+  height: 100%;
+  padding: 4px;
+  font-size: 14px;
+  border-radius: 10px;
+}
+
+.submitButton:hover, .deleteButton:hover, .exitButton:hover, .editButton:hover {
   background-color: gray;
 }
