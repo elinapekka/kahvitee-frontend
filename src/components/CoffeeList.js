@@ -43,69 +43,81 @@ export default function CoffeeList() {
         .catch(err => console.log(err));
     }
 
-    return ( 
-        <div>
-            <div style={{ 
-                visibility: isVisible ? "visible" : "hidden",
-                height: isVisible ? "fit-content" : 0,
-                
-            }} >
-                <EditCoffee 
-                    coffee={selectedCoffee} 
-                    setCoffee={setSelectedCoffee}
-                    setIsVisible={setIsVisible}
-                    getAllCoffees={getAllCoffees}
-                />
+    if (coffees.length === 0) {
+        return (
+            <div>
+                <h2>Lempikahvit</h2>
+                <div style={{padding: 15,}}>
+                    Tällä hetkellä ei yhtään kahvia tallennettuna tai backend ei ole käynnissä. 
+                </div>
+                <AddCoffee />
             </div>
-            <h2>Lempikahvit</h2>
-            <table style={{margin: "auto"}}>
-                <thead>
-                    <tr>
-                        <th>Nimi</th>
-                        <th>Paino (g)</th>
-                        <th>Hinta (€)</th>
-                        <th>Paahtoaste (1-5)</th>
-                        <th></th>
-                        <th></th>
-                    </tr>
+        );
+    } else {
+        return ( 
+            <div>
+                <div style={{ 
+                    visibility: isVisible ? "visible" : "hidden",
+                    height: isVisible ? "fit-content" : 0,
                     
-                </thead>
-                <tbody>
-                    {
-                    coffees.map((coffee, index) => 
-                        <tr key={index}>
-                            <td>{coffee.name}</td>
-                            <td>{coffee.weight}</td>
-                            <td>{coffee.price}</td>
-                            <td>{coffee.roastLevel}</td>
-                            <td style={{maxWidth: 35}} >
-                                <button 
-                                className="editButton" 
-                                onClick={() => {
-                                    setSelectedCoffee({
-                                        id: (index + 1),
-                                        name: coffee.name,
-                                        weight: coffee.weight,
-                                        price: coffee.price,
-                                        roastLevel: coffee.roastLevel
-                                    }); 
-                                    setIsVisible(true);
-                                }}>
-                                    Muokkaa
-                                </button>
-                            </td>
-                            <td style={{maxWidth: 35}} >
-                                <button 
-                                className="deleteButton" 
-                                onClick={() => deleteCoffee(index + 1)}>
-                                    Poista
-                                </button>
-                            </td>
-                        </tr>)
-                    }
-                </tbody>
-            </table>
-            <AddCoffee getAllCoffees={getAllCoffees}/>
-        </div>
-    );
+                }} >
+                    <EditCoffee 
+                        coffee={selectedCoffee} 
+                        setCoffee={setSelectedCoffee}
+                        setIsVisible={setIsVisible}
+                        getAllCoffees={getAllCoffees}
+                    />
+                </div>
+                <h2>Lempikahvit</h2>
+                <table style={{margin: "auto"}}>
+                    <thead>
+                        <tr>
+                            <th>Nimi</th>
+                            <th>Paino (g)</th>
+                            <th>Hinta (€)</th>
+                            <th>Paahtoaste (1-5)</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        
+                    </thead>
+                    <tbody>
+                        {
+                        coffees.map((coffee, index) => 
+                            <tr key={index}>
+                                <td>{coffee.name}</td>
+                                <td>{coffee.weight}</td>
+                                <td>{coffee.price}</td>
+                                <td>{coffee.roastLevel}</td>
+                                <td style={{maxWidth: 35}} >
+                                    <button 
+                                    className="editButton" 
+                                    onClick={() => {
+                                        setSelectedCoffee({
+                                            id: (index + 1),
+                                            name: coffee.name,
+                                            weight: coffee.weight,
+                                            price: coffee.price,
+                                            roastLevel: coffee.roastLevel
+                                        }); 
+                                        setIsVisible(true);
+                                    }}>
+                                        Muokkaa
+                                    </button>
+                                </td>
+                                <td style={{maxWidth: 35}} >
+                                    <button 
+                                    className="deleteButton" 
+                                    onClick={() => deleteCoffee(index + 1)}>
+                                        Poista
+                                    </button>
+                                </td>
+                            </tr>)
+                        }
+                    </tbody>
+                </table>
+                <AddCoffee getAllCoffees={getAllCoffees}/>
+            </div>
+        );
+    }
 }
